@@ -9,9 +9,11 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-green-500: oklch(72.3% 0.219 149.579);
     --color-purple-600: oklch(55.8% 0.288 302.321);
     --color-purple-700: oklch(49.6% 0.265 301.924);
     --color-pink-600: oklch(59.2% 0.249 0.584);
+    --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-gray-900: oklch(21% 0.034 264.665);
     --color-black: #000;
@@ -275,8 +277,36 @@
     border-style: var(--tw-border-style);
     border-width: 0px;
   }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-\[\#0e01f6\] {
+    border-color: #0e01f6;
+  }
+  .border-\[\#1e13e3\] {
+    border-color: #1e13e3;
+  }
+  .border-\[\#4a42d5\] {
+    border-color: #4a42d5;
+  }
+  .border-\[\#453ce9\] {
+    border-color: #453ce9;
+  }
+  .border-\[\#EF4444\] {
+    border-color: #EF4444;
+  }
+  .border-green-500 {
+    border-color: var(--color-green-500);
+  }
+  .border-red-500 {
+    border-color: var(--color-red-500);
+  }
   .bg-\[\#0F172A\] {
     background-color: #0F172A;
+  }
+  .bg-\[\#1e293b\] {
+    background-color: #1e293b;
   }
   .bg-\[\#8f0707\] {
     background-color: #8f0707;
@@ -296,8 +326,14 @@
   .bg-\[\#EF4444\] {
     background-color: #EF4444;
   }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
   .bg-purple-600 {
     background-color: var(--color-purple-600);
+  }
+  .bg-slate-700 {
+    background-color: var(--color-slate-700);
   }
   .bg-slate-800 {
     background-color: var(--color-slate-800);
@@ -357,6 +393,9 @@
   }
   .underline {
     text-decoration-line: underline;
+  }
+  .accent-green-500 {
+    accent-color: var(--color-green-500);
   }
   .outline {
     outline-style: var(--tw-outline-style);
