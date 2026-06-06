@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "",
       id: "",
       date: "",
+      completed: false
     };
     obj.name = taskName.value;
     obj.date = taskDate.value;
@@ -64,6 +65,19 @@ display(); //makes sure the display function keeps the taks in the web even when
           </div>
         `;
 
+        taskCard.dataset.id= `${task.id}`;
+
     return taskCard;
   }
+
+
+
+
+
+
+
+
+
+
+
 });
