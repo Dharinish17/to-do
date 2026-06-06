@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addTask.addEventListener("click", () => {
     //adding the values to local storage
-    if (taskName.value.trim() === "") {
+    if (taskName.value.trim() === "" || taskDate.value.trim()==="") {
       return;
     }
     let obj = {
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeMarkComplete() {
-    let t = JSON.parse(localStorage.getItem("user"));
+    let t = JSON.parse(localStorage.getItem("user"))|| [];
     t.forEach((task) => {
       if (task.completed) {
         let cid = task.id;
@@ -112,22 +112,21 @@ document.addEventListener("DOMContentLoaded", () => {
         des.classList.add("taskComplete");
         des.innerText = "Task Completed";
       }
-      else{
-        return;
-      }
     });
   }
 
   taskList.addEventListener("click", (e) => {
     if (e.target.classList.contains("complete-btn")) {
       let completeId = e.target.id;
-
+      
+      taskArr= [];
       let tsk = JSON.parse(localStorage.getItem("user"));
       tsk.forEach((task) => {
         if (task.id == completeId) {
           task.completed = true;
         }
       });
+      taskArr= tsk;
       localStorage.setItem("user", JSON.stringify(tsk));
       changeMarkComplete();
     }
