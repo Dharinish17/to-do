@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@layer components{
+    .task{
+        background-color: #334155;
+        margin-bottom: 10px;  
+        border-radius: 4px;
+        padding: 8px;
+    }
+}
