@@ -221,20 +221,11 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
-  .h-0 {
-    height: calc(var(--spacing) * 0);
-  }
   .h-0\.5 {
     height: calc(var(--spacing) * 0.5);
   }
   .h-20 {
     height: calc(var(--spacing) * 20);
-  }
-  .h-40 {
-    height: calc(var(--spacing) * 40);
   }
   .w-16 {
     width: calc(var(--spacing) * 16);
@@ -242,20 +233,11 @@
   .w-24 {
     width: calc(var(--spacing) * 24);
   }
-  .w-40 {
-    width: calc(var(--spacing) * 40);
-  }
   .w-\[90\%\] {
     width: 90%;
   }
   .w-full {
     width: 100%;
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -283,21 +265,8 @@
     border-style: var(--tw-border-style);
     border-width: 0px;
   }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-  }
   .border-\[\#0e01f6\] {
     border-color: #0e01f6;
-  }
-  .border-\[\#1e13e3\] {
-    border-color: #1e13e3;
-  }
-  .border-\[\#4a42d5\] {
-    border-color: #4a42d5;
-  }
-  .border-\[\#453ce9\] {
-    border-color: #453ce9;
   }
   .border-\[\#EF4444\] {
     border-color: #EF4444;
@@ -305,17 +274,8 @@
   .border-green-500 {
     border-color: var(--color-green-500);
   }
-  .border-red-500 {
-    border-color: var(--color-red-500);
-  }
-  .bg-\[\#\#1e293b\] {
-    background-color: ##1e293b;
-  }
   .bg-\[\#0F172A\] {
     background-color: #0F172A;
-  }
-  .bg-\[\#1e293b\] {
-    background-color: #1e293b;
   }
   .bg-\[\#8f0707\] {
     background-color: #8f0707;
@@ -323,20 +283,11 @@
   .bg-\[\#22C55E\] {
     background-color: #22C55E;
   }
-  .bg-\[\#453ce9\] {
-    background-color: #453ce9;
-  }
-  .bg-\[\#01702a\] {
-    background-color: #01702a;
-  }
   .bg-\[\#09036b\] {
     background-color: #09036b;
   }
   .bg-\[\#EF4444\] {
     background-color: #EF4444;
-  }
-  .bg-\[\#\] {
-    background-color: #;
   }
   .bg-green-500 {
     background-color: var(--color-green-500);
@@ -352,9 +303,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .p-0 {
-    padding: calc(var(--spacing) * 0);
   }
   .p-1 {
     padding: calc(var(--spacing) * 1);
@@ -394,6 +342,9 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
+  .text-\[\#22C55E\] {
+    color: #22C55E;
+  }
   .text-black {
     color: var(--color-black);
   }
@@ -402,16 +353,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .accent-green-500 {
-    accent-color: var(--color-green-500);
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .hover\:bg-\[\#05ad42\] {
     &:hover {
@@ -432,21 +373,6 @@
       @media (hover: hover) {
         background-color: var(--color-purple-700);
       }
-    }
-  }
-  .md\:mt-0 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 0);
-    }
-  }
-  .md\:mt-2 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 2);
-    }
-  }
-  .md\:mt-3 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 3);
     }
   }
   .md\:mt-4 {
@@ -593,6 +519,13 @@
     padding: 8px;
   }
 }
+@layer components {
+  .taskComplete {
+    color: #22c55e;
+    font-weight: 600;
+    margin-top: 16px;
+  }
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -602,17 +535,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
     }
   }
 }
