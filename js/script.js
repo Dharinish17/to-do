@@ -132,4 +132,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     chkCounters();
   });
+
+//   deleting the task in local storage
+  taskList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("delete-btn")) {
+      let deleteId = e.target.id;
+      
+      taskArr= [];
+      let tsk = JSON.parse(localStorage.getItem("user"))|| [];
+      tsk = tsk.filter(task => task.id != deleteId);
+      localStorage.setItem("user", JSON.stringify(tsk));
+      taskArr= tsk;
+      display();
+      changeMarkComplete();
+    }
+    chkCounters();
+  });
 });
