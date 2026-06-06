@@ -302,6 +302,9 @@
   .border-red-500 {
     border-color: var(--color-red-500);
   }
+  .bg-\[\#\#1e293b\] {
+    background-color: ##1e293b;
+  }
   .bg-\[\#0F172A\] {
     background-color: #0F172A;
   }
@@ -325,6 +328,9 @@
   }
   .bg-\[\#EF4444\] {
     background-color: #EF4444;
+  }
+  .bg-\[\#\] {
+    background-color: #;
   }
   .bg-green-500 {
     background-color: var(--color-green-500);
