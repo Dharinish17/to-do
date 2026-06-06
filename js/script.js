@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     taskDate.value = "";
     display(); //displays the task when added by the add task btn
     chkCounters();
+    changeMarkComplete();
   });
   display(); //makes sure the display function keeps the taks in the web even when the web is re-loaded
   chkCounters();
@@ -110,6 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         des.classList.add("taskComplete");
         des.innerText = "Task Completed";
+      }
+      else{
+        return;
       }
     });
   }
