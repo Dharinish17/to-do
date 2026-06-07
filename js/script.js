@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let editChange = document.getElementById("EditTask");
   let EditTaskName = document.getElementById("EditTaskName");
   let EditTaskDate = document.getElementById("EditTaskDate");
-  let cancelEdit= document.getElementById("cancelEdit");
+  let cancelEdit = document.getElementById("cancelEdit");
+  let searchTask;
+  let searchTaskBtn;
 
   let taskArr = JSON.parse(localStorage.getItem("user")) || [];
 
@@ -42,15 +44,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function display() {
     // retrieving values from the local storage
-    taskList.innerHTML = '<div class="bg-slate-800 rounded-sm p-4"><h1 class="text-4xl mb-2 font-bold">Tasks</h1><div id="heading"></div></div>';
+    taskList.innerHTML =
+      '<div class="bg-slate-800 rounded-sm p-4"><h1 class="text-4xl mb-2 font-bold">Tasks</h1><div id="heading"><div class="border border-white bg-white flex items-center justify-between p-2 pr-0 border-r-0 h-10 mb-4 rounded md:w-[38%] md:mr-2"><input type="text" placeholder="Search Tasks" id="searchTask" class="bg-white text-black w-[90%] border-none outline-none caret-black rounded"/><div class="bg-gray-500 h-10 rounded-r w-10 flex p-3 items-center hover:bg-gray-700" id="searchTaskBtn"><i class="fa-solid text-black fa-magnifying-glass"></i></div></div></div></div>';
     let val = JSON.parse(localStorage.getItem("user"));
     if (val === null) {
       return;
     }
-    let heading= document.getElementById("heading");
+    let heading = document.getElementById("heading");
+    searchTask = document.getElementById("searchTask");
+    searchTaskBtn = document.getElementById("searchTaskBtn");
 
     val.forEach((task) => {
       heading.appendChild(createTaskCard(task));
+    });
+
+    //this is for search field:
+    searchTask = document.getElementById("searchTask");
+
+    searchTask.addEventListener("input", () => {
+      srh = searchTask.value;
+      srhBtn();
     });
   }
 
@@ -86,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
     taskCard.dataset.id = `${task.id}`;
+    // changeMarkComplete();
 
     return taskCard;
   }
@@ -115,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (task.completed) {
         let cid = task.id;
         let des = document.getElementById(String(cid));
+        if (!des) return;
         des.classList.remove(
           "bg-[#22C55E]",
           "rounded-sm",
@@ -123,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         des.classList.add("taskComplete");
         des.innerText = "Task Completed";
-        let EditTask= document.getElementById(String(cid)+"E");
+        let EditTask = document.getElementById(String(cid) + "E");
         EditTask.classList.add("hidden");
       }
     });
@@ -133,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.classList.contains("complete-btn")) {
       let completeId = e.target.id;
 
-      taskArr= [];
+      taskArr = [];
       let tsk = JSON.parse(localStorage.getItem("user"));
       tsk.forEach((task) => {
         if (task.id == completeId) {
@@ -179,13 +194,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     let tsk = JSON.parse(localStorage.getItem("user"));
     tsk.forEach((task) => {
-      if (String(task.id)+"E" == editId) {
+      if (String(task.id) + "E" == editId) {
         task.name = EditTaskName.value;
         task.date = EditTaskDate.value;
       }
     });
     localStorage.setItem("user", JSON.stringify(tsk));
-    taskArr= tsk;
+    taskArr = tsk;
     EditTaskName.value = "";
     EditTaskDate.value = "";
     display();
@@ -194,9 +209,36 @@ document.addEventListener("DOMContentLoaded", () => {
     editCard.classList.add("hidden");
   });
 
-  cancelEdit.addEventListener("click", ()=> {
+  cancelEdit.addEventListener("click", () => {
     editCard.classList.add("hidden");
     EditTaskName.value = "";
     EditTaskDate.value = "";
   });
+
+  // search task filter
+
+  let srh;
+
+  searchTask.addEventListener("input", () => {
+    srh = searchTask.value;
+    srhBtn();
+  });
+
+  function srhBtn() {
+    let tsk = JSON.parse(localStorage.getItem("user")) || [];
+    let filtered = tsk.filter((task) =>
+      task.name.toLowerCase().includes(srh.toLowerCase()),
+    );
+
+    let heading = document.getElementById("heading");
+
+    // remove only task cards
+    document.querySelectorAll(".task").forEach((task) => task.remove());
+
+    filtered.forEach((task) => {
+      heading.appendChild(createTaskCard(task));
+    });
+
+    changeMarkComplete();
+  }
 });
