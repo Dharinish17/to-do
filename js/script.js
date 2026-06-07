@@ -42,14 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function display() {
     // retrieving values from the local storage
-    taskList.innerHTML = "";
+    taskList.innerHTML = '<div class="bg-slate-800 rounded-sm p-4"><h1 class="text-4xl mb-2 font-bold">Tasks</h1><div id="heading"></div></div>';
     let val = JSON.parse(localStorage.getItem("user"));
     if (val === null) {
       return;
     }
+    let heading= document.getElementById("heading");
 
     val.forEach((task) => {
-      taskList.appendChild(createTaskCard(task));
+      heading.appendChild(createTaskCard(task));
     });
   }
 
@@ -195,5 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cancelEdit.addEventListener("click", ()=> {
     editCard.classList.add("hidden");
+    EditTaskName.value = "";
+    EditTaskDate.value = "";
   });
 });

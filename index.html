@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="bg-slate-800 mt-14 rounded-sm p-4">
+    <div class="bg-slate-800 mt-14 rounded-sm p-4 mb-10">
       <input
         type="text"
         placeholder="Task Name"
@@ -70,36 +70,36 @@
         id="taskDate"
       />
       <button
-        class="p-2 bg-purple-600 rounded-sm font-bold mt-3 mb-10 hover:bg-purple-700 md:w-[15%]"
+        class="p-2 bg-purple-600 rounded-sm font-bold mt-3 mb-3 hover:bg-purple-700 md:w-[15%]"
         id="addTask"
       >
         + Add Task
       </button>
+    </div>
 
-      <div id="taskList">
-        <div class="task hidden">
-          <!--this is a task card and it is hidden-->
-          <div class="md:flex md:justify-between">
-            <p class="font-semibold">Task Name 1</p>
-            <p class="text-gray-900 md:font-semibold">dd-mm-yyyy</p>
-          </div>
-          <div class="md:flex md:gap-4">
-            <button
-              class="bg-[#22C55E] rounded-sm p-1 font-semibold block mt-4 md:mt-4 hover:bg-[#05ad42]"
-            >
-              Mark As Complete
-            </button>
-            <button
-              class="bg-[#EF4444] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#8f0707]"
-            >
-              Delete
-            </button>
-            <button
-              class="bg-[#2d07d5] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#170372]"
-            >
-              Edit Task
-            </button>
-          </div>
+    <div id="taskList">
+      <div class="task hidden">
+        <!--this is a task card and it is hidden-->
+        <div class="md:flex md:justify-between">
+          <p class="font-semibold">Task Name 1</p>
+          <p class="text-gray-900 md:font-semibold">dd-mm-yyyy</p>
+        </div>
+        <div class="md:flex md:gap-4">
+          <button
+            class="bg-[#22C55E] rounded-sm p-1 font-semibold block mt-4 md:mt-4 hover:bg-[#05ad42]"
+          >
+            Mark As Complete
+          </button>
+          <button
+            class="bg-[#EF4444] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#8f0707]"
+          >
+            Delete
+          </button>
+          <button
+            class="bg-[#2d07d5] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#170372]"
+          >
+            Edit Task
+          </button>
         </div>
       </div>
     </div>
