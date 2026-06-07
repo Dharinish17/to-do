@@ -6,13 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let total = document.getElementById("totalCount");
   let done = document.getElementById("doneCount");
   let pending = document.getElementById("pendingCount");
-  let editCard= document.getElementById("EditTaskCard");
+  let editCard = document.getElementById("EditTaskCard");
+  let editChange = document.getElementById("EditTask");
+  let EditTaskName = document.getElementById("EditTaskName");
+  let EditTaskDate = document.getElementById("EditTaskDate");
 
   let taskArr = JSON.parse(localStorage.getItem("user")) || [];
 
   addTask.addEventListener("click", () => {
     //adding the values to local storage
-    if (taskName.value.trim() === "" || taskDate.value.trim()==="") {
+    if (taskName.value.trim() === "" || taskDate.value.trim() === "") {
       return;
     }
     let obj = {
@@ -72,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
               Delete
             </button>
             <button
-              class="bg-[#2d07d5] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#170372]"
+              class="edit-btn bg-[#2d07d5] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#170372]"
               id= "${task.id}E"
             >
               Edit Task
@@ -105,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeMarkComplete() {
-    let t = JSON.parse(localStorage.getItem("user"))|| [];
+    let t = JSON.parse(localStorage.getItem("user")) || [];
     t.forEach((task) => {
       if (task.completed) {
         let cid = task.id;
@@ -127,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
   taskList.addEventListener("click", (e) => {
     if (e.target.classList.contains("complete-btn")) {
       let completeId = e.target.id;
-      
+
       taskArr= [];
       let tsk = JSON.parse(localStorage.getItem("user"));
       tsk.forEach((task) => {
@@ -135,23 +138,23 @@ document.addEventListener("DOMContentLoaded", () => {
           task.completed = true;
         }
       });
-      taskArr= tsk;
+      taskArr = tsk;
       localStorage.setItem("user", JSON.stringify(tsk));
       changeMarkComplete();
     }
     chkCounters();
   });
 
-//   deleting the task in local storage
+  //   deleting the task in local storage
   taskList.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-btn")) {
       let deleteId = e.target.id;
-      
-      taskArr= [];
-      let tsk = JSON.parse(localStorage.getItem("user"))|| [];
-      tsk = tsk.filter(task => task.id != deleteId);
+
+      taskArr = [];
+      let tsk = JSON.parse(localStorage.getItem("user")) || [];
+      tsk = tsk.filter((task) => task.id != deleteId);
       localStorage.setItem("user", JSON.stringify(tsk));
-      taskArr= tsk;
+      taskArr = tsk;
       display();
       changeMarkComplete();
     }
@@ -159,7 +162,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //editing tasks
+  let editId;
+  taskList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("edit-btn")) {
+      editId = String(e.target.id);
 
+      editCard.classList.remove("hidden");
+    }
+  });
 
-
+  editChange.addEventListener("click", () => {
+    if (EditTaskName.value.trim() === "" || EditTaskDate.value.trim() === "") {
+      editCard.classList.add("hidden");
+      return;
+    }
+    let tsk = JSON.parse(localStorage.getItem("user"));
+    tsk.forEach((task) => {
+      if (String(task.id)+"E" == editId) {
+        task.name = EditTaskName.value;
+        task.date = EditTaskDate.value;
+      }
+    });
+    localStorage.setItem("user", JSON.stringify(tsk));
+    taskArr= tsk;
+    EditTaskName.value = "";
+    EditTaskDate.value = "";
+    display();
+    chkCounters();
+    changeMarkComplete();
+    editCard.classList.add("hidden");
+  });
 });
