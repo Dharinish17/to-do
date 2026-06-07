@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let total = document.getElementById("totalCount");
   let done = document.getElementById("doneCount");
   let pending = document.getElementById("pendingCount");
+  let editCard= document.getElementById("EditTaskCard");
 
   let taskArr = JSON.parse(localStorage.getItem("user")) || [];
 
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     taskCard.innerHTML = `
         <div class="md:flex md:justify-between">
             <p class="font-semibold text-xl md:text-2xl lg:text-3xl">${task.name}</p>
-            <p class="text-gray-900 font-semibold">${task.date}</p>
+            <p class="text-gray-900 font-semibold">${task.date.split("-").reverse().join("-")}</p>
             </div>
             <div class="md:flex md:gap-4">
             <button
@@ -69,6 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
               id= "${task.id}"
             >
               Delete
+            </button>
+            <button
+              class="bg-[#2d07d5] rounded-sm p-1 font-semibold block mt-2 md:mt-4 hover:bg-[#170372]"
+              id= "${task.id}E"
+            >
+              Edit Task
             </button>
           </div>
         `;
@@ -111,6 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         des.classList.add("taskComplete");
         des.innerText = "Task Completed";
+        let EditTask= document.getElementById(String(cid)+"E");
+        EditTask.classList.add("hidden");
       }
     });
   }
@@ -148,4 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     chkCounters();
   });
+
+  //editing tasks
+
+
+
 });
