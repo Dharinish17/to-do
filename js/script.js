@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     taskCard.innerHTML = `
         <div class="md:flex md:justify-between">
-            <p class="font-semibold">${task.name}</p>
-            <p class="text-gray-900 md:font-semibold">${task.date}</p>
+            <p class="font-semibold text-xl md:text-2xl lg:text-3xl">${task.name}</p>
+            <p class="text-gray-900 font-semibold">${task.date}</p>
             </div>
             <div class="md:flex md:gap-4">
             <button
