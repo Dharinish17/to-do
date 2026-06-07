@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let editChange = document.getElementById("EditTask");
   let EditTaskName = document.getElementById("EditTaskName");
   let EditTaskDate = document.getElementById("EditTaskDate");
+  let cancelEdit= document.getElementById("cancelEdit");
 
   let taskArr = JSON.parse(localStorage.getItem("user")) || [];
 
@@ -173,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   editChange.addEventListener("click", () => {
     if (EditTaskName.value.trim() === "" || EditTaskDate.value.trim() === "") {
-      editCard.classList.add("hidden");
       return;
     }
     let tsk = JSON.parse(localStorage.getItem("user"));
@@ -190,6 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
     display();
     chkCounters();
     changeMarkComplete();
+    editCard.classList.add("hidden");
+  });
+
+  cancelEdit.addEventListener("click", ()=> {
     editCard.classList.add("hidden");
   });
 });
